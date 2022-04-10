@@ -7,23 +7,23 @@ width = 30;
 height = 10;
 length = 130;
 number_of_joints = 3;     // needs to be odd
-triangles_positions = [-45, -5]; //[40, 10]; // positions on X axis in where to place the triangles supports
+triangles_positions = [-45, 1.5]; //[40, 10]; // positions on X axis in where to place the triangles supports
 $fn = 10;
 
 
 module logos() {
-    translate([-30,0,0])
-    resize([12,12,2])
+    translate([-24,0,0])
+    resize([9,9,2])
     import(file = "pokemod.svg", center = true, dpi = 96);
     text("Pokemod",
-            size=size*20/30,
-            font="Josefin Sans",
+            size=7,
+            font="Hacked",
             halign="center",
             valign="center");
 }
 module make_holes() {
     // make your custom holes here
-    make_hole(-25, 25, 10);
+    make_hole(-22, 30, 10);
 }
 
 /* custom holes */
@@ -34,7 +34,7 @@ module make_hole(x_offset, hole_length, hole_width = 10) {
 
 // main pcb slot
 module pcb_slot() {
-    translate([pcb_length / 2, width / 10, height / 2 + 1]) rotate([270, 0, 90]) dovetail_3d(
+    translate([pcb_length / 2, width / 10, height / 2 + 0.5]) rotate([270, 0, 90]) dovetail_3d(
         pcb_thickness + minkowski_triangles * 2 * 2, pcb_thickness + minkowski_triangles * 2 * 1.4, height / 2 + minkowski_triangles * 4, pcb_length);
 }
 
@@ -50,6 +50,9 @@ spacing_between_joints = (length - (max_width * n_joints)) / (number_of_joints =
 // main thing
 difference() {
     union() {
+    translate([length/2-75.7,-width/2+6.2,height/2])
+    rotate([0,0,0])
+    linear_extrude(height=.9) logos();
         intersection() {
             minkowski() {
                 difference() {
@@ -72,9 +75,6 @@ difference() {
     for (i = [-number_of_supports:number_of_supports]) {
         translate([i * spacing_between_joints, -width / 2, -height / 2 + height / 2]) rotate([-90, 180, 0]) pinhole();
     }
-    translate([length/2-88.7,-width/2+8.2,4.5])
-    rotate([0,0,0])
-    linear_extrude(height=0.5) logos();
 }
 
 /* triangle thingie */
