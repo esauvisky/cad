@@ -19,68 +19,66 @@ NOZZLE_GROUP_SIZE = 4;
 x_distance = 12;
 y_distance = 12;
 
+volcano = 8;
+
 box = [
     (NOZZLE_GROUP_SIZE - 1) * x_distance + 20,
     (NOZZLES_04_ROWS + len(NOZZLES) - 2) * y_distance + 21,
-    8
+    8 + volcano
 ];
 
 module box_frame() {
     difference() {
        union() {
             cube(box);
-            translate([2.1, 2.1, box.z]) cube([box.x-3.7, box.y-3.7, 1.5]);
+            translate([2, 2, box.z]) cube([box.x-4, box.y-4, 1.5]);
         }
 
         different_nozzles();
 
-        translate([5, (len(NOZZLES) - 1) * y_distance + 10, 8])
+        translate([5, (len(NOZZLES) - 1) * y_distance + 10, 8 + volcano])
             cube([NOZZLE_GROUP_SIZE * x_distance, 1, 2]);
-
         translate([1, (len(NOZZLES) - 1) * y_distance + 11, 0])
             nozzles_04();
 
-        translate([1, box.y / 2 + 7, 6])
-        rotate([90, 180, 0])
-        linear_extrude(14)
-        polygon([
-            [0, 0], [-2, 1], [-1, 6], [0, 6]
-        ]);
-            // cube([4, 15, 7], true);
+        // snap latch
+        translate([1.1, box.y / 2 + 7, 6 + volcano])
+            rotate([90, 180, 0])
+            linear_extrude(14)
+            polygon([[0, 0], [-2, 1], [-1, 6], [0, 6]]);
+        translate([0.1, box.y / 2, 2 + volcano])
+            cube([4, 15, 12], true);
 
-        translate([0, box.y / 2, 2])
-            cube([4, 15, 20], true);
-
-        translate([box.x - 1, 5.5, 6.5])
-            cube([10, 9, 10]);
-
-        translate([box.x - 1, box.y - 14.5, 6.5])
-            cube([10, 9, 10]);
+        // hinge clearances
+        translate([box.x - 2, 5.5, 6.5 + volcano - 0.5])
+            cube([12, 9, 10]);
+        translate([box.x - 2, box.y - 14.5, 6.5 + volcano - 0.5])
+            cube([12, 9, 10]);
     }
 
     for (i = [0: len(NOZZLES)-1]) {
-        translate([NOZZLE_GROUP_SIZE * x_distance + 1.5, 8.5 + (i * y_distance) * 0.9, 8.5])
+        translate([NOZZLE_GROUP_SIZE * x_distance + 1.5, 8.5 + (i * y_distance) * 0.9, 8.5 + volcano])
             rotate([0, 0, -90])
             linear_extrude(2)
-            translate([-1,-0.8,0])
-            text(NOZZLES[i], size = 4, halign = "center", font = "Inconsolata: style=Bold", $fn=50);
+            translate([-0.9,-0.8,0])
+            text(NOZZLES[i], size = 4, halign = "center", font = "Inconsolata: style=Bold", $fn=100);
     }
 
-    translate([NOZZLE_GROUP_SIZE * x_distance + 1.5, (len(NOZZLES) - 1) * y_distance + 11 + (NOZZLES_04_ROWS -1 ) * y_distance / 2 + 5, 8.5])
+    translate([NOZZLE_GROUP_SIZE * x_distance + 1.5, (len(NOZZLES) - 1) * y_distance + 11 + (NOZZLES_04_ROWS -1 ) * y_distance / 2 + 5, 8.5 + volcano])
         rotate([0, 0, -90])
         linear_extrude(2)
         translate([0,-0.8,0])
-        text(".4", size = 4, halign = "center", font = "Inconsolata: style=Bold", $fn=50);
+        text(".4", size = 4, halign = "center", font = "Inconsolata: style=Bold", $fn=100);
 }
 
 module different_nozzles() {
     for (i = [0: len(NOZZLES)-1]) {
         for (j = [0: NOZZLE_GROUP_SIZE-1]) {
             translate([9 + (j * x_distance)*0.9, 9 + (i * y_distance)*0.9, 2])
-                // cylinder(10, 3.05, 3.05, $fn=50);
-                metric_thread (6.8, 1, 10, internal=true, leadin=1, test=true);
+                // cylinder(10, 3.05, 3.05, $fn=100);
+                metric_thread (6.8, 1, 10 + volcano, internal=true, leadin=1, test=false);
 
-            translate([9 + (j * x_distance)*0.9, 9 + (i * y_distance)*0.9, 2])
+            translate([9 + (j * x_distance)*0.9, 9 + (i * y_distance)*0.9, 2 + volcano])
                 %nozzle();
         }
     }
@@ -90,10 +88,10 @@ module nozzles_04() {
     for (i = [0: NOZZLES_04_ROWS-1]) {
         for (j = [0: NOZZLE_GROUP_SIZE-1]) {
             translate([8 + (j * x_distance)*0.9, 5 + (i * y_distance)*0.9, 2])
-                // cylinder(10, 3.05, 3.05, $fn=50);
-                metric_thread (6.8, 1, 10, internal=true, leadin=1, test=true);
+                // cylinder(10, 3.05, 3.05, $fn=100);
+                metric_thread (6.8, 1, 10 + volcano, internal=true, leadin=1, test=false);
 
-            translate([8 + (j * x_distance)*0.9, 5 + (i * y_distance)*0.9, 2])
+            translate([8 + (j * x_distance)*0.9, 5 + (i * y_distance)*0.9, 2 + volcano])
                 %nozzle();
         }
     }
@@ -111,7 +109,7 @@ module nozzle() {
 }
 
 module lid() {
-    translate([1, 0, -8])
+    translate([1, 0, -8 + volcano])
         union () {
             difference() {
                 cube([box.x, box.y, 8]);
@@ -135,38 +133,41 @@ module lid() {
 
     difference() {
         union() {
-            translate([box.x, box.y / 2, 2])
+            translate([box.x, box.y / 2, 2 + volcano])
                 cube([2, 14, 10], true);
 
-            translate([box.x , box.y / 2 + 7, 1])
+            translate([box.x , box.y / 2 + 7, 1 + volcano])
                 rotate([90, 0, 0])
                 linear_extrude(14)
                 polygon([
                     [0, 0], [-2, 1], [-1, 6], [0, 6]
                 ]);
         }
-        translate([box.x, box.y / 2, 2])
+        translate([box.x, box.y / 2, 2 + volcano])
             cube([0.5, 14, 7], true);
+        translate([box.x + 0.3, box.y / 2, 7 + volcano])
+        rotate([90,0,0])
+        cylinder(r=0.3, h=14, center=true, $fn=100);
     }
 }
 
 module hinge() {
     rotate([90, 0, 0])
-        cylinder(7, 1.2, 1.2, $fn=50, center = true);
+        cylinder(7, 1.2, 1.2, $fn=100, center = true);
 
     translate([0, 2.5, 0])
     rotate([-90, 0, 180])
     difference() {
         linear_extrude(5)
         hull() {
-            circle(2.8, $fn=50);
+            circle(2.8, $fn=100);
 
             translate([3, 4, 0])
                 square([1, 1]);
         }
 
         translate([0, 0, -1])
-        cylinder(8, 1.6, 1.6, $fn=50);
+        cylinder(8, 1.6, 1.6, $fn=100);
 
         translate([0, -1, -1])
         linear_extrude(8)
@@ -178,7 +179,7 @@ module hinge() {
     rotate([-90, 0, 0])
     linear_extrude(1)
     hull() {
-        circle(1.4, $fn=50);
+        circle(1.4, $fn=100);
 
         translate([1, 0, 0])
             square([2, 1]);
@@ -191,7 +192,7 @@ module hinge() {
     rotate([-90, 0, 0])
     linear_extrude(1)
     hull() {
-        circle(1.4, $fn=50);
+        circle(1.4, $fn=100);
 
         translate([1, 0, 0])
             square([2, 1]);
