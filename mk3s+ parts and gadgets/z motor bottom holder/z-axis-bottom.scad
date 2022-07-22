@@ -41,19 +41,13 @@ module z_bottom_fancy()
 
 module z_bottom_quick_release(hole = true)
 {
-    tolerance=0;
     difference()
     {
         // main bar
         union()
         {
-            if (hole == false) {
-                translate([40-tolerance/2,tolerance/2,3.5]) cube([10.8-tolerance,40-tolerance,3.5]);
-                translate([40-tolerance/2,15+tolerance/2,0]) cube([10.8-tolerance,10-tolerance,3.5]);
-            } else {
-                translate([39.2,0,3.5]) cube([10.8,40,3.5]);
-                translate([38.2,15,0]) cube([12.8,10,3.5]);
-            }
+            translate([39.2,0,3.5]) cube([10.8,40,3.5]);
+            translate([38.2,15,0]) cube([11.8,10,3.5]);
         }
 
             // motor opening
@@ -68,13 +62,8 @@ module z_bottom_quick_release(hole = true)
 
         // fancy corners
         // translate([47,-10,-2]) rotate([0,45,0]) cube([30,60,30]);
-        if (hole == false) {
-                translate([32+tolerance/2,7,0]) rotate([0,0,-45]) cube([20,3,7]);
-                translate([32+tolerance,29,0]) rotate([0,0,45]) cube([20,3,7]);
-        } else {
-                translate([32,6.8,0]) rotate([0,0,-45]) cube([20,3,7]);
-                translate([32,29,0]) rotate([0,0,45]) cube([20,3,7]);
-        }
+        translate([32,6.8,0]) rotate([0,0,-45]) cube([20,3,7]);
+        translate([32,29,0]) rotate([0,0,45]) cube([20,3,7]);
     }
 }
 
