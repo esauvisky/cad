@@ -9,18 +9,18 @@ width = 30;
 height = 10;
 length = 120;
 number_of_joints = 7;          // needs to be odd
-triangles_positions = [30, -30]; //[40, 10]; // positions on X axis in where to place the triangles supports
+triangles_positions = [-45, 0]; //[40, 10]; // positions on X axis in where to place the triangles supports
 
 $fn = 50; // for output
 // $fn = 20;
 
 module logos() {
-    translate([-25.5, 2.5, 0]) resize([14, 14, 3]) import(file = "pokemod.svg", center = true, dpi = 96);
+    translate([-15.5, 2.5, 0]) resize([14, 14, 3]) import(file = "../misc/pokemod.svg", center = true, dpi = 96);
     // text("Pokemod", size = 8, font = "NewsCycle", halign = "center", valign = "center");
 }
 module make_holes() {
     // make your custom holes here
-    // make_hole(-22, 30, 10);
+    make_hole(-22, 30, 10);
 }
 
 /* custom holes */

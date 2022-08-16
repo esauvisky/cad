@@ -1,6 +1,6 @@
 include <BOSL/constants.scad>
 use <BOSL/masks.scad>
-include <dovetail.scad>
+include <../libraries/dovetail.scad>
 include <pin_pegs.scad>
 pcb_length = 130;
 pcb_thickness = 1.6;
