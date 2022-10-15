@@ -2,13 +2,13 @@ X=+0; Y=+1; Z=+2;
 
 /* [General] */
 // temperature of the first block
-initial_temperature = 280;
+initial_temperature = 225;
 // final temperature
-final_temperature = 230;
+final_temperature = 195;
 // change in temperature between successively printed blocks
 temperature_step = -10;
 // number of blocks - used if non-zero, overrides final_temperature
-number_of_blocks = 0;
+number_of_blocks = 4;
 
 /* [Detail Geometry] */
 // dimensions of the base plate
@@ -58,12 +58,12 @@ module Tower(x, overhang, gap, temp)
         translate([0,0,z2 + block[Z]/2]) cube(block, true);
         translate([0, -block[Y]/2+text_depth-0.001, z2 + block[Z]/2])
         rotate([90,0,0])
-        linear_extrude(text_depth)   
-        text(temp, size = block[X] * text_ascent, 
+        linear_extrude(text_depth)
+        text(temp, size = block[X] * text_ascent,
              valign = "center", halign = "center",
              font = text_font);
     }
-    
+
     z3 = z2 + block[Z];
 
     overhang_pts = [[0,0],[0,-overhang_z],[overhang,0]];
@@ -73,7 +73,7 @@ module Tower(x, overhang, gap, temp)
         rotate([90,0,0])
         linear_extrude(block[Y])
         polygon(points=overhang_pts);
-    
+
     pedestal_z = abs(overhang_z_top -bridge_z_top + bridge_z);
     translate([block[X]/2 + gap, bridge_y_front, z4]) {
         cube([(overhang-gap), bridge_y, pedestal_z]);
