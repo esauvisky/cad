@@ -2,9 +2,9 @@ X=+0; Y=+1; Z=+2;
 
 /* [General] */
 // temperature of the first block
-initial_temperature = 225;
+initial_temperature = 250;
 // final temperature
-final_temperature = 195;
+final_temperature = 220;
 // change in temperature between successively printed blocks
 temperature_step = -10;
 // number of blocks - used if non-zero, overrides final_temperature
