@@ -26,15 +26,25 @@ forms:
 n must be even for forms 5, 6, 8, 9, 11, 12, 13
 */
 
+module test(from, to) {
+    for (i = [from:to]) {
+        // if (i != 9) {
+            translate([(i - from) * hex * 2 + hex / 2, hex * 2, 0]) text(str(i), font = "helvetica:style=Bold", size = 20, center = true);
+            translate([(i - from) * hex * 2, 0, 0]) grid(i, 4, 4, 4);
+        // }
+    }
+}
+test(0, 4);
+
 // tesela(8, 4);
 // grid(2, 4);
 // hexagon(2,4);
 
-res = 60; // resolution
-w = 1.6;   // spacing
+res = 50;  // resolution
+w = 4;   // spacing
 h = 2;     // height
-hex = 60;  // width
-bordo = w; // depth
+hex = 80;  // width
+bordo = 1; // depth
 
 module tesela(forma, n = 4) {
     // TODO: don't repeat me repeat me
@@ -82,7 +92,6 @@ module tesela(forma, n = 4) {
 
     if (forma == 3) {
         xiro = (round(rands(-0, 12, 1)[0]));
-        echo(xiro * 15);
         rotate(xiro * 15) circle(r = r - w / 2, $fn = 3);
     }
 
@@ -90,7 +99,6 @@ module tesela(forma, n = 4) {
 
     if (forma == 4) {
         xiro = (round(rands(-0, 12, 1)[0]));
-        echo(xiro * 15);
         rotate(xiro * 15) circle(r = r - w / 2, $fn = 4);
     }
 
@@ -199,8 +207,9 @@ module tesela(forma, n = 4) {
     if (forma == 14) {
         difference() {
             circle(r = r3, $fn = 6);
-            // for(i=[0:90:360]) rotate(i+30) translate([0,r,0]) square([w,d], center=true);            for (i = [0:60:360])
-            rotate(i) translate([0, d1 / 4 * cos(30), 0]) square([r1 * (1 - sin(30)) + w / 2, w], center = true);
+            // for(i=[0:90:360]) rotate(i+30) translate([0,r,0]) square([w,d], center=true);
+            for (i = [0:60:360])
+                rotate(i) translate([0, d1 / 4 * cos(30), 0]) square([r1 * (1 - sin(30)) + w / 2, w], center = true);
             for (i = [0:60:360])
                 rotate(i + 30) translate([0, r1, 0]) square([w, d1 * (1 - sin(30)) + w / 2], center = true);
             for (i = [0:60:360])
@@ -436,14 +445,15 @@ module tesela(forma, n = 4) {
     }
 }
 
-module grid(forma, n = 4) {
+module grid(forma, rows = 3, cols = 3, n = 4) {
     // TODO: don't repeat me repeat me
     f = (forma == 5 || forma == 6 || forma == 8 || forma == 9 || forma == 11 || forma == 12 || forma == 13 || forma == 14 || forma == 15 || forma == 16 ||
          forma == 17 || forma == 18 || forma == 19 || forma == 20 || forma == 21 || forma == 22 || forma == 23 || forma == 24 || forma == 25 || forma == 26 ||
          forma == 27 || forma == 29 || forma == 30)
             ? 1
             : 0;
-    nt = f == 1 && n % 2 == 1 ? n + 1 : n;
+    nt = (f == 1 && n % 2 == 1 ? n + 1 : n);
+
     d = n == 0 ? 0 : f == 1 ? (2 * hex - w / cos(30)) / nt : (2 * hex * cos(30) - w) / nt;
     d1 = d / cos(30);
     r = d / 2;
@@ -452,8 +462,13 @@ module grid(forma, n = 4) {
     r3 = (r - w / 2) / cos(30);
     x = f == 1 ? 0 : (-hex * cos(30) + w / 2);
     y = -nt * (r)*2 * cos(30);
-    for (j = [0:1:nt * 2])
-        translate([(j % 2) * r, j * r * 2 * cos(30), 0]) for (i = [-nt:1:nt]) translate([i * d, 0, 0]) rotate([0, 0, 30]) tesela(forma);
+    for (j = [0:1:rows - 1]) {
+        translate([(j % 2) * r, j * r * 2 * cos(30), 0]) {
+            for (i = [-cols / 2 - cols % 2 + 2:1:cols / 2 - cols % 2 + 1]) {
+                translate([i * d, 0, 0]) rotate([0, 0, 30]) tesela(forma);
+            }
+        }
+    }
 }
 
 module hexagon(forma, n = 4) {
