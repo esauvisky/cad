@@ -34,16 +34,16 @@ module test(from, to) {
         // }
     }
 }
-test(0, 4);
+// test(0, 4);
 
 // tesela(8, 4);
 // grid(2, 4);
 // hexagon(2,4);
 
 res = 50;  // resolution
-w = 4;   // spacing
+w = 7.5;   // spacing
 h = 2;     // height
-hex = 80;  // width
+hex = 75;  // width
 bordo = 1; // depth
 
 module tesela(forma, n = 4) {
