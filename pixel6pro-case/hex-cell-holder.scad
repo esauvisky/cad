@@ -149,7 +149,7 @@ flip_holders = false;	// Mostly used for taking pngs
 ///////////////////////////////////////////////////////////////////////////
 // NON-Configurable helper variables
 ///////////////////////////////////////////////////////////////////////////
-$fn = 50;       // Number of facets for circular parts.
+$fn = 10;       // Number of facets for circular parts.
 hextra = 0.0001; // enlarge hexes by this to make them overlap
 extra = 1;    	// for proper differences()
 spacing = 4;    // Spacing between top and bottom pieces
