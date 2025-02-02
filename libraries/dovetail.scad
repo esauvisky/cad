@@ -1,7 +1,7 @@
-//male_dovetail(max_width=11, min_width=5, depth=5, height=30, cutout_width=5, cutout_depth=3.5)
+male_dovetail(max_width=11, min_width=5, depth=5, height=30, cutout_width=5, cutout_depth=3.5);
 //This produces a male dovetail with the dimensions specified. The cutout_width and depth specify the dimensions of a cutout in the center of the dovetail that will hopefully provide some spring or flex to allow them to go together tightly.
 //
-//female_dovetail((max_width=11, min_width=5, depth=5, height=30, block_width=15, block_depth=9, clearance=0.25)
+female_dovetail(max_width=11, min_width=5, depth=5, height=30, block_width=15, block_depth=9, clearance=0.25);
 //This produces a block of the specified dimensions with a dovetail cut out of it with an added clearance on three sides.
 //
 //female_dovetail_negative(max_width=11, min_width=5, depth=5, height=30, clearance=0.25)

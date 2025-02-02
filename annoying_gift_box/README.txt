@@ -1,0 +1,1 @@
+Remixed Annoying Gift Box by LittleCoolBomb - sized in mm, separate lid, support-free print by Zzzy on Thingiverse: https://www.thingiverse.com/thing:6882673

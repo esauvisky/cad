@@ -1,0 +1,26 @@
+OpenOcular OE2 Adapter License Agreement
+
+This License Agreement ("Agreement") is made between you ("Licensee") and OpenOcular ("Licensor"), collectively referred to as the "Parties."
+
+1. Grant of License: Licensor hereby grants Licensee a non-exclusive, non-transferable, non-commercial license to use the OE2 adapter design ("Design") solely for the purposes outlined in this Agreement, subject to the terms and conditions set forth herein.
+
+2. Attribution: Licensee must give appropriate credit to the Licensor, provide a link to the license, and indicate if changes were made. Licensee may do so in any reasonable manner, but not in any way that suggests the Licensor endorses the Licensee or Licensee's use.
+
+3. Non-Commercial Use: Licensee may not use the Design for commercial purposes. Commercial purposes include, but are not limited to, selling or distributing the Design for profit, or using the Design in connection with any business activities.
+
+4. No Derivatives: Licensee may not modify, alter, or create derivative works based on the Design.
+
+5. No Sublicensing: Licensee may not sublicense, lease, rent, lend, or transfer any rights granted under this Agreement to any third party.
+
+6. Termination: This Agreement may be terminated by Licensor if Licensee breaches any term of this Agreement. Upon termination, Licensee must immediately cease all use of the Design and delete or destroy all copies of the Design in Licensee's possession.
+
+7. Disclaimer of Warranty: The Design is provided "as is" without warranty of any kind, either expressed or implied, including, but not limited to, the implied warranties of merchantability or fitness for a particular purpose.
+
+8. Limitation of Liability: In no event shall Licensor be liable for any damages whatsoever arising out of the use of or inability to use the Design.
+
+9. Governing Law: This Agreement shall be governed by and construed in accordance with the laws of [your jurisdiction].
+
+10. Entire Agreement: This Agreement constitutes the entire agreement between the Parties and supersedes all prior or contemporaneous agreements, representations, or understandings.
+
+By downloading, accessing, or using the Design, Licensee agrees to be bound by the terms of this Agreement.
+

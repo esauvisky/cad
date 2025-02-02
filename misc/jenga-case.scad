@@ -1,4 +1,4 @@
-include <dovetail.scad>
+// include <dovetail.scad>
 include <hinge.scad>
 include <tesselations.scad>
 
@@ -69,8 +69,8 @@ module primary_wall() {
         // magnets("primary");
 
         // decoration
-        // translate([width * 3 / 2, 0, 13.5]) mirror([0, 1, 0]) rotate([90, 0, 0]) linear_extrude(width) grid(1, rows = 1, cols = 2.4);
-        // translate([width, width * 3 / 2, 13.5]) mirror([1, 0, 0]) rotate([90, 0, 90]) linear_extrude(width) grid(1, rows = 1, cols = 2.4);
+        // translate([width * 3 / 2, 0, 17]) mirror([0, 1, 0]) rotate([90, 0, 0]) linear_extrude(width) grid(1, rows = 5, cols = 2.4);
+        // translate([width, width * 3 / 2, 17]) mirror([1, 0, 0]) rotate([90, 0, 90]) linear_extrude(width) grid(1, rows = 5, cols = 2.4);
     }
 }
 
@@ -98,9 +98,9 @@ module secondary_wall() {
         // magnets("secondary");
 
         // decoration
-        // translate([width + size, size + width / 2, height - 14]) rotate([90, 180, 90]) linear_extrude(width) grid(1, rows = 1, cols = 2.4);
+        // translate([width + size, size + width / 2, height - 14]) rotate([90, 180, 90]) linear_extrude(width) grid(1, rows = 5, cols = 2.4);
         // translate([size + width / 2, size + width * 2, height - 14]) rotate([0, 0, 270]) rotate([90, 180, 90]) linear_extrude(width)
-        //     grid(1, rows = 1, cols = 2.4);
+        //     hexagon(1, rows = 5, cols = 2.4);
     }
 }
 

@@ -1,0 +1,7 @@
+// Parameters
+$fn = 100; // Increase for smoother circle
+diameter = 13.5; // Diameter at the bottom of the pestle
+height = 5; // Height of the bottom part of the pestle
+
+// Main Pestle
+cylinder(h = height, d = diameter);

@@ -31,28 +31,28 @@ Parameters
 $fn=100;
 
 //outside length without ribs
-outSideLength=80;
+outSideLength=140;
 
 //outside width without ribs
-outSideWidth=80;
+outSideWidth=160;
 
 //outside height
-outSideHeight=60;
+outSideHeight=30;
 
 //shell thickness
-shellThickness=3; // [3:9]
+shellThickness=2; // [3:9]
 
 //rib thickness
 ribThickness=6; // [6:20]
 
 //fillet radius
-filletRadius=4; // [4:20]
+filletRadius=3; // [4:20]
 
 //show example
 showExample=false;
 
 //show example combined
-showExampleCombined=true;
+showExampleCombined=false;
 
 
 //calculated heights top split box

@@ -7,8 +7,8 @@ module logo() {
     };
 }
 
-angle = rands(0, 180 + 50, 100,1879786769678696769897668686865567877867);
-hex_length = 13;
+angle = rands(3, 180 + 60, 100, 12132);
+hex_length = 20;
 for (i = [0:1]) {
     for (j = [0:7]) {
         rotate_by = angle[i * 10 + j];

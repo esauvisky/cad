@@ -22,7 +22,6 @@ Bh = 4; // Height of the bevel
 
 union()
 {
-
     translate([ 0, 0, Ch / 2 ])
     difference() {
         metric_trapezoidal_threaded_nut(od = 30, id = Cd + Ct, h = Ch + Ct * 2, pitch = 3, bevel = true);
@@ -32,7 +31,7 @@ union()
                 cylinder(h = Ch * 2, d = Cd + Ct + St * 2);
     }}
 
-
+    // green cap
     translate([0,0,Ch + Ct + Bh])
     difference() {
         cylinder(h = Sh, d1 = Sa + Sp * 2 + Ct, d2 = Sm + Sp * 2);
@@ -40,10 +39,12 @@ union()
         cylinder(h = Sh, d1 = Sa - Sp * 2 + Ct, d2 = Sm);
     }
 
+    color([1, 1, 1, 0.5])
     translate([ 0, 0, Ct + Ch])
     difference() {
-        cylinder(h = Bh, d1 = Cd + Ct + St * 2, d2 = Sa + Sp * 2 + Ct);
-        cylinder(h = Bh, d1 = Cd + Ct - St * 2, d2 = Sa - Sp * 2 + Ct);
+        cyl(h = Bh, d1 = Cd + Ct + St * 2, d2 = Sa + Sp * 2 + Ct, align = V_ABOVE);
+        // cylinder();
+        cyl(h = Bh, d1 = Cd + Ct - St * 2, d2 = Sa - Sp * 3 + Ct, align = V_ABOVE);
     }
     // difference() {
     //     cylinder(h = Ct, d = Cd + Ct + St * 2);
